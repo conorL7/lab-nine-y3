@@ -76,6 +76,16 @@ app.put('/api/movies/:id',(req, res)=>{
 
 })
 
+// HTTP delete() method Listening at /api/movies/:id.
+app.delete('/api/movies/:id', (req, res) =>{
+    console.log("Delete movie: " + req.params.id);
+
+    // finds record by ID and Deletes it.
+    movieModel.findByIdAndDelete(req.params.id, (err,data)=>{
+        res.send(data);
+    }) 
+})
+
 app.get('/api/movies', (req, res) => {
     movieModel.find((err, data)=>{
         res.json(data);
